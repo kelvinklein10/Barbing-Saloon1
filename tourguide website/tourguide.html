@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Guide Work</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        body,html{
+            font-family: sans-serif,'Times New Roman', Times, serif;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(135deg, #125d12 30%, #fff 100%);
+            color: #333;
+        }
+        header{
+            background-color:rgb(3, 34, 3);
+            color: white;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding: 1rem 2rem;
+            animation: fadeindown 2s ease forwards;
+        }
+        nav{
+            background-color: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            cursor: pointer;
+         }
+         nav a{
+            font-size: 1.1rem;
+            font-weight: 700px;
+            transition: color 0.4s ease-out;
+            text-decoration: none;
+            color: white;
+         }
+         nav a:hover{
+            color: #f0cd07;
+         }
+         .home{
+            background-image: url(woman.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+         }
+
+         main{
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            animation: fadeinup 1s ease forwards;
+         }
+         .break{
+            background-color: rgba(0, 0, 0, 0.61);
+            border-radius: 5px;
+         }
+         .toall{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+            gap: 2rem;
+            animation: fadeinup 1.2s ease forwards;
+         }
+         .homeflag{
+            flex: 1 1 300px;
+            max-width: 400px;
+         }
+         .homeflag img{
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+         }
+
+         .hometext{
+            max-width: 600px;
+         }
+
+         .hometext .one{
+            font-size: 2.5rem;
+            margin-bottom: 0.3rem;
+            color: white;
+         }
+         .hometext .two{
+            font-size: 1.2rem;
+            color: white;
+            margin-top: 1rem;
+         }
+
+         .places{
+            border-radius: 20px;
+         }
+         .container{
+            display: flex;
+         }
+         .mapstore{
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation-timing-function: fadeinup 1.3s ease forwards;
+         }
+         .maplocation{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.884);
+            color:#222;
+            padding: 1rem 0.8rem;
+            border-radius: 10px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.81);
+            font-weight: bolder;
+         }
+         .container{
+            display: flex;
+         }
+         .places{
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.952);
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeinup 1.5 ease forwards;
+            padding: 1.5em;
+         }
+         .places h2{
+            margin-bottom: 1.2rem;
+         }
+         .hold{
+            overflow-y: auto;
+            max-height: 560px;
+            margin: 0px 3px;
+         }
+         .holder{
+            gap: 1rem;
+            display: grid;
+            grid-template-columns:repeat(2);
+         }
+         .address{
+            background-color: white;
+            margin: 5px;
+            padding: 1.1rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+         }
+         .address img{
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+         }
+         .address h3{
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #444;
+         }
+         #meal-menu{
+            margin-top: 2rem;
+            gap: 1rem;
+            display: grid;
+            grid-template-columns: auto auto;
+         }
+         .food{
+            background-color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+         }
+         .food h3{
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #444;
+         }
+         .food img{
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+         }
+         .tour-info{
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            /* margin: 12px 12px; */
+            margin-block: 12px;
+            margin-inline: 3px;
+            padding: 1.5rem;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeinup 1.5s ease forwards;
+         }
+         .tour-info h2{
+            margin-bottom: 1rem;
+            color: green;
+         }
+         .legend{
+            display: flex;
+          overflow: auto; 
+         }
+         .legen{
+            background-color: white;
+            padding: 20px;
+            border-radius: 13px;
+            margin: 10px;
+            width: 300px;
+            flex-shrink: 0;
+         }
+         .legen img{
+            width: 100%;
+            height: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+         }
+         #more{
+            background-color: green;
+            color: white;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 5px;
+         }
+         #more:hover{
+            background-color: white;
+            color: green;
+            transition: 0.5s ease forwards;
+            font-weight: bold;
+         }
+         .long{
+            color:black;
+            -webkit-text-stroke:0.2px green;
+         }
+    
+         .much{
+            color: #333;
+            display: none;
+         }
+         .dot{
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+         }
+         .contact{
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            animation: fadeinup 1.5s ease forwards;
+         }
+         .contact h3{
+            font-size: 35px;
+            font-weight: bold;
+            font-family: sans-serif;
+            color: #333;
+         }
+         .catch{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+         }
+         .cut{
+            overflow: hidden;
+            flex-wrap: wrap;
+         }
+         .cut:hover{
+            width: 505px;
+            height:655px ;
+            background: linear-gradient(100deg, white, green, red, yellow);
+            border-radius: 10px;
+            cursor: pointer;
+         }
+         .cut img{
+            width: 500px;
+            height: 650px;
+            border-radius: 10px;
+         }
+         .lut p{
+            line-height: 27px;
+            background-color: black;
+            color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-weight:lighter;
+         }
+         .lut p:hover{
+            color: black;
+            background-color: #125d12;
+            transform: rotateX(200deg);
+            font-weight: bold;
+            cursor: pointer;
+         }
+         .footer{
+            background-color:#333;
+         }
+         .foot{
+            display: flex;
+            justify-content: space-around;
+         }
+         .fot h4{
+            color: darkgreen;
+            font-weight: 800;
+            font-size: large;
+            padding-top: 8px;
+         }
+         .fot h4:hover{
+            color: black;
+            background-color: white;
+            border-radius: 5px;
+         }
+         .fot p{
+            color: white;
+            line-height: 30px;
+         }
+         .add-con{
+            font-weight: 800px;
+            font-size: large;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            color: white;
+         }
+         .one:hover{
+            color: blue;
+            transition: 1s ease-in-out;
+         }
+         .two:hover{
+            color: red;
+            transition: 1s ease-in-out;
+         }
+         .three:hover{
+            color: green;
+            transition: 1s ease-in-out;
+         }
+         .four:hover{
+            color: blue;
+            transition: 1s ease-in-out;
+         }
+
+
+
+
+         /* Animation */
+         @media (max-width:786px){
+            .main{
+                padding:0 1rem ;
+            }
+            .container{
+                flex-wrap: wrap;
+            }
+            .hold{
+               max-height: calc(3 * 180px + 2rem); 
+               overflow-y: auto;
+               /* scroll-behavior: smooth; */
+            }
+           .map{
+            animation: map;
+            animation-iteration-count: infinite;
+            animation-delay: 0.1s;
+            animation-duration: 3s;
+            position: relative;
+            animation-timing-function: ease-in-out;
+            transition: transform smooth;
+           }
+           .legend{
+            display: flex;
+            overflow-x: auto;
+
+            }
+            /* .legen img{
+               scroll-behavior: smooth;
+               overflow-x: auto;
+            } */
+            .cut img{
+               width: 400px;
+            }
+           .footer{
+            background-color: #f0cd07;
+           }
+           .foot{
+             margin: 15px;
+           }
+           .footer:hover{
+            background: linear-gradient(100deg, green, white, red, blue);
+            translate:calc(130 * 5 + 10px);
+            cursor: pointer;
+           }
+         }
+
+         @keyframes map{
+            0%{transform: translate(10%, 10%);}
+         }
+
+         @keyframes map{
+            0%{
+                transform: rotate(0deg);
+            }
+            25%{
+                transform: rotate(5deg);
+            }
+            50%{
+                transform: rotate(0deg);
+            }
+            75%{
+                transform: rotate(-5deg);
+            }
+            100%{
+                transform: rotate(0deg);
+            }
+         }
+
+         @keyframes fadeindown{
+            0%{
+                opacity:0px;
+                transform: translateY(-20px);
+            }
+            100%{
+                opacity: 1px;
+                transform: translateY(0px);
+            }
+         }
+         @keyframes fadeinup{
+            0%{
+                opacity: 0px;
+                transform: translateY(20px);
+            }
+            100%{
+                opacity: 1px;
+                transform: translateY(0px);
+            }
+         }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        Interactive Tour Guide
+    </header>
+    <nav>
+            <a href="#home" onclick="scrolltosection('home')">Home</a>
+            <a href="#mapsetting" onclick="scrolltosection('mapsetting')">Map</a>
+            <a href="#meal-menu" onclick="scrolltosection('meal-menu')">Tour Info</a>
+            <a href="#legend" onclick="scrolltosection('legend')">Contact</a>
+    </nav>
+    <main>
+        <!-- home section -->
+        <div class="home">
+        <div class="break">
+            <section id="home" class="toall">
+                <div class="homeflag">
+                    <img src="map.png" alt="" class="map">
+                </div>
+                <div class="hometext">
+                    <h1 class="one">
+                        Welcome to Your Travel Explorer
+                    </h1>
+                    <p class="two">
+                        Discover amazing places around you with live location tracking and immersive interactivity.
+                    </p>
+                </div>
+            </section>
+        </div>
+        </div>
+        <!-- map section -->
+        <section
+        id="mapsetting">
+        <div class="mapstore">
+            <div class="maplocation">
+                Obtaining Location....
+            </div>
+        </div>
+    </section>
+    <!-- place address -->
+     <section class="places">
+            <h2> PLACES TO EXPLORE</h2>
+            <div class="container">
+        <div class="explore">
+             <div class="hold">
+                <div class="holder">
+           <div class="address">         <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Spaghetti Carbonara">
+            <h3>Lagos State</h3>
+            <p>A rich and creamy pasta dish with pancetta and parmesan cheese.</p>
+           </div>
+           <div class="address">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Spaghetti Carbonara">
+            <h3>FCT Abuja</h3>
+            <p>A rich and creamy pasta dish with pancetta and parmesan cheese.</p>
+           </div>
+           <div class="address">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Spaghetti Carbonara">
+            <h3>Portacourt State</h3>
+            <p>A rich and creamy pasta dish with pancetta and parmesan cheese.</p>
+           </div>
+           <div class="address">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Spaghetti Carbonara">
+            <h3>Imo State</h3>
+            <p>A rich and creamy pasta dish with pancetta and parmesan cheese.</p>
+           </div>
+           <div class="address">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Spaghetti Carbonara">
+            <h3>Plateau State</h3>
+            <p>A rich and creamy pasta dish with pancetta and parmesan cheese.</p>
+           </div>
+           <div class="address">
+            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Spaghetti Carbonara">
+            <h3>Bayelsa State</h3>
+            <p>A rich and creamy pasta dish with pancetta and parmesan cheese.</p>
+           </div>
+           </div>
+        </div>
+        </div>
+        <div id="meal-menu">
+            <div class="food">
+               <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Spaghetti Carbonara">
+               <h3>Spaghetti Carbonara</h3>
+<p>A rich and creamy pasta dish with pancetta and parmesan cheese. </p>
+            </div>
+            <div class="food">
+               <img src="sp.jpg" alt="">
+               <h3>Sushi Platter</h3>
+<p>A colorful assortment of fresh sushi rolls and nigiri. </p>
+            </div>
+            <div class="food">
+               <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Spaghetti Carbonara">
+               <h3>Spaghetti Carbonara</h3>
+<p>A rich and creamy pasta dish with pancetta and parmesan cheese. </p>
+            </div>
+            <div class="food">
+               <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Chocolate Cake">
+               <h3>Chocolate Cake</h3>
+<p>A rich and moist chocolate cake topped with creamy frosting.</p>
+            </div>
+            <div class="food">
+               <img src="Screenshot_20260212-192412.jpg" alt="">
+               <h3>Classic Cheeseburger</h3>
+<p>Grilled beef patty with melted cheese, lettuce, tomato, and pickles.</p>
+            </div>
+            <div class="food">
+               <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=400&q=80"  alt="Chocolate Cake">
+               <h3>Chocolate Cake</h3>
+<p>A rich and moist chocolate cake topped with creamy frosting.</p>
+            </div>
+        </div>
+        </div>
+     </section>
+     <!-- Tour History -->
+     <section id="tour-info" class="tour-info">
+        <h2>Featured Tours</h2>
+        <div class="history">
+            <div class="ago">
+                <div class="ages">
+                    <p class="long">Tamiu Abdualrahman Kayode, born on <br> March 18, 1990 is a prominent Nigerian Celebrity widely known as Rahman Jago. <br> Rahman Jago is a Nigerian music <br> promoter, Influencer and Enterpreneur known for his strong <br>influence in the Nigerian street-pop scene. He rose  to Prominence <br>
+                <span class="dots">...</span>
+                <span class="much">
+                  a high end lifestyle and strong loyalty to his circle, played a significant role in strengthening his brand. <br>
+                  overtime, he evolved into more than just an associate of major artist. He became known connector within the entertainment industry bridging artist, promoters and influencers both Nigeria and Internationally. <br>
+                  Today Rahman Jago is recongnized as one of the notable personalities linked to nigeria's street-pop wave, respected for his influence, network and contribution to the growth of contemporary urban music culture. 
+                </span></p>
+                <button id="more">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="legend" id="legend">
+            <div class="legen">
+                <img src="h2.jpg" alt="">
+                <h4>Fela Anikulapo Kuti</h4>
+                <p>A great and mighty warrior, who made history of strengh and power</p>
+            </div>
+            <div class="legen">
+                <img src="h1.jpg" alt="">
+                <h4>Obafemi Awolowo</h4>
+                <p>A man of great honor and respect, with his chieftency title. </p>
+            </div>
+            <div class="legen">
+                <img src="h3.jpg" alt="">
+                <h4>Nnamdi Azikiwa</h4>
+                <p>His Excellency, Former president of the Republic of Nigeria.</p>
+            </div>
+            <div class="legen">
+                <img src="woman.jpg" alt="">
+                <h4>Gloria</h4>
+                <p>A woman of honor, with potentials of political skills.</p>
+            </div>
+            <div class="legen">
+                <img src="h2.jpg" alt="">
+                <h4>Fela</h4>
+                <p>An Artistic song writers that influence lives with his music</p>
+            </div>
+        </div>
+     </section>
+     <!-- Contact Service -->
+     <section id="contact" class="contact">
+        <h3>Contact</h3>
+        <div class="catch">
+            <div class="cut">
+                <img src="pic1.jpg" alt="">
+                </div>
+                <div class="lut">
+                    <p>Email: info@travelguide.com <br> 
+Phone: +1-555-123-4567 <br>
+Location: +1-555-123-4567 <br>
+Emergency Number: +1-555-123-4567</p>
+            </div>
+        </div>
+     </section>
+    </main>
+    <footer>
+      <div class="footer">
+         <div class="foot">
+            <div class="fot">
+               <h4>Flex Learn</h4>
+               <p>Lorem, ipsum dolor sit amet consectetur <br>
+adipisicing elit. <br>
+Vel, eligendi cupiditate!</p>
+            </div>
+            <div class="fot">
+               <h4>Quick Link</h4>
+               <p>Home <br>
+                  About us <br>
+                  Service <br>
+                  Contact </p>
+            </div>
+            <div class="fot">
+               <h4>Contact Info</h4>
+               <p>+234-000-0000-0000 <br>
+               +254-000-0000-0000 <br>
+               info@flexlearn.com</p>
+            </div>
+         </div>
+         <div class="add-con">
+            <i class="one">Facebook</i>
+            <i class="two">Instagram</i>
+            <i class="three">Linkin</i>
+            <i class="four">Twitter</i>
+         </div>
+      </div>
+    </footer>
+</body>
+</html>
